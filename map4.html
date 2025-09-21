@@ -13,29 +13,23 @@
     <main>
         <section class="map-detail">
             <img src="Karte_04.png" alt="Karte_04" style="width:100%;max-width:600px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-           <<p>Diese Dasymetrische Choroplethenkarten zeigt zwei verschiede Arten der Bevölkerungsdichte in Berlin</p>
+           <<p>Diese Karte zeigt die Ergebnisse der letzten beiden Bundestagswahlen mit den Wahlbezirksgewinnern abgestuft nach %</p>
             <h2>Erstellung</h2>
-            <p>Zunächst erfolgt der Download der benötigten Daten, darunter die LOR-Daten zur Bevölkerungsstatistik, die CLC-Daten sowie die Geometrie von Berlin. Anschließend werden die Geometrien von Berlin mit den entsprechenden Sachdaten der Bevölkerungsstatistik über eine Verknüpfung verbunden. Um die Analyse auf urbane Räume zu konzentrieren, werden die CLC-Daten nach den Klassen 111 und 112, also den urbanen Räumen, gefiltert. Die gefilterten Daten werden dann gespeichert und aufgelöst. Danach erfolgt eine Verschneidung der restlichen Flächen, die nicht als Wohngebiete klassifiziert sind. Im nächsten Schritt werden die Bevölkerungsdaten mit den urbanen Räumen verschränkt, um eine flächenspezifische Auswertung zu ermöglichen. Daraufhin wird die Fläche der jeweiligen Räume berechnet.
-                Für die Visualisierung dieser Daten wird eine abgestufte Symbolisierung gewählt. Dabei wird der Wert als Einwohner pro Quadratmeter berechnet, indem die Anzahl der Einwohner durch die Fläche geteilt und anschließend durch 10.000 skaliert wird. Zur Einteilung werden fünf Klassen nach der Jenks-Methode gebildet, wobei besonders darauf geachtet wird, dass diese Klassen nicht miteinander verbunden sind. Die Darstellung erfolgt über einen Farbverlauf, der von Weiß für niedrige Werte bis zu Rot für hohe Werte reicht.
-                Für die Druckzusammenstellung werden schließlich die beiden Kartenbilder platziert und mit den notwendigen Elementen versehen: Überschrift, Maßstab, Maßstabsbalken, Quellenangaben, Legende sowie der Angabe des Erstellers. So entsteht eine übersichtliche und aussagekräftige Kartendarstellung der Bevölkerungsdichte in den urbanen Räumen Berlins.”</p>
+            <p>Zunächst werden die Wahldaten sowie die zugehörige Geometrie von der Bundeswahlleitung heruntergeladen. Im Anschluss erfolgt die Bereinigung der Wahldaten, wobei der Fokus auf den fünf wichtigsten Parteien und der Zweitstimme liegt. Danach werden die Geometrien mit den Sachdaten über die Wahlkreisnummer verknüpft. Für jeden Wahlkreis wird der Wahlsieger ermittelt, und der entsprechende prozentuale Anteil wird in einer neuen Spalte für jeden Wahlkreis hinterlegt.
+                Zur Darstellung der Ergebnisse werden die Wahlkreise entsprechend der Farbe der Partei des Wahlsiegers kategorisiert. Darüber hinaus wird eine regelbasierte Fläche über die Wahlkreise gelegt, die die Intensität der Flächen je nach prozentualem Anteil am Gesamtergebnis variiert: Je höher der Anteil, desto kräftiger die Farbe, je geringer der Anteil, desto blasser die Fläche.
+                Für die Druckzusammenstellung werden die Kartenbilder der Bundestagswahlen 2021 und 2025 platziert. Dabei werden Überschrift, Maßstab, Maßstabsbalken, Quellenangaben, Legende und Angaben zum Ersteller ergänzt. Wichtig ist, dass aus der Legende klar hervorgeht, weshalb die Flächen unterschiedliche Farbintensitäten besitzen, oder alternativ wird ein erklärender Hinweistext hinzugefügt, um die Bedeutung der Farbverläufe verständlich zu machen. So entsteht eine aussagekräftige und übersichtliche Visualisierung der Wahlergebnisse auf Wahlkreisebene.</p>
              <h2>Vorteile</h2> 
             <ul>
-                <li>Realistischere Darstellung von Verteilungen.</li>
-                <li>Zeigt Daten dort, wo sie tatsächlich auftreten (z. B. Bevölkerungsdichte nur in besiedelten Flächen statt gleichmäßig über ganze Gemeindeflächen verteilt).</li>
-                <li>Vermeidung von Flächenverzerrungen.</li>
-                <li>Administrative Grenzen können große unbesiedelte Flächen enthalten (z. B. Wälder, Seen), die bei klassischen Choroplethenkarten zu falschen Interpretationen führen. Dasymetrische Karten reduzieren diesen Effekt.</li>
-                <li>Höhere Genauigkeit bei kleinen Flächen.</li>
-                <li>Besonders nützlich bei der Darstellung von Phänomenen, die räumlich ungleich verteilt sind (z. B. Bewohner).</li>
-                <li>Vermeidung von falscher Darstellung.</li>
-                <li>Bessere Vergleichbarkeit zwischen Regionen.</li>
+               <li>Bessere Gewichtung nach Bedeutung → Dunkle Farben = viele Wähler (großer Einfluss) → Blassere Farben = weniger Wähler (geringerer Einfluss)</li>
+                <li>Zusätzliche Dimension ohne Karte mehr hinzuzufügen. Anstatt ein zweites Diagramm oder eine komplexe Visualisierung zu nutzen, wird die Bedeutung eines Gebiets durch Transparenz vermittelt.</li>
+                <li>Gibt den Daten mehr Kontext.Die Karte vermittelt realistischer, wo politische Mehrheiten tatsächlich stark existieren, anstatt nur darzustellen, wie sie geografisch verteilt sind.</li>
             </ul>
 
             <h2>Nachteile</h2>
             <ul>
-                <li>Die notwendigen Daten wie z.B. Landnutzungsdaten liegen nicht immer vor.</li>
-                <li>Die Erstellung ist komplexer als bei klassischen Choropletenkarten, da zusätzliche Berechnungen und Modellierungen notwendig sind.</li>
-                <li>Die Karten können für manche Betrachter schwerer zu verstehen sein, da die Flächen nicht mehr direkt mit administrativen Einheiten übereinstimmen.</li>
-                <li>Die Verteilung innerhalb einer Einheit ist noch immer modelliert und bildet die Verhältnisse nicht exakt ab.</li>
+                <li>Hohe Transparenz kann dazu führen, dass Karten schwer lesbar sind, insbesondere bei komplexen Datensätzen.</li>
+                <li>Oft nur grobe Einschätzung von Größenordnungen möglich, anstatt präzise Werte darzustellen.</li>
+                <li>Transparenzwerte können je nach Bildschirm oder Druckqualität variieren.</li>
             </ul>
         </section>
     </main>
