@@ -13,29 +13,25 @@
     <main>
         <section class="map-detail">
             <img src="Karte_02.png" alt="Karte_02" style="width:100%;max-width:600px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-            <<p>Diese Dasymetrische Choroplethenkarten zeigt zwei verschiede Arten der Bevölkerungsdichte in Berlin</p>
+            <<p>Diese Gitterchoroplethenkarte zeigt die Verteilung von Kirschblütenbäumen in Berlin</p>
             <h2>Erstellung</h2>
-            <p>Zunächst erfolgt der Download der benötigten Daten, darunter die LOR-Daten zur Bevölkerungsstatistik, die CLC-Daten sowie die Geometrie von Berlin. Anschließend werden die Geometrien von Berlin mit den entsprechenden Sachdaten der Bevölkerungsstatistik über eine Verknüpfung verbunden. Um die Analyse auf urbane Räume zu konzentrieren, werden die CLC-Daten nach den Klassen 111 und 112, also den urbanen Räumen, gefiltert. Die gefilterten Daten werden dann gespeichert und aufgelöst. Danach erfolgt eine Verschneidung der restlichen Flächen, die nicht als Wohngebiete klassifiziert sind. Im nächsten Schritt werden die Bevölkerungsdaten mit den urbanen Räumen verschränkt, um eine flächenspezifische Auswertung zu ermöglichen. Daraufhin wird die Fläche der jeweiligen Räume berechnet.
-                Für die Visualisierung dieser Daten wird eine abgestufte Symbolisierung gewählt. Dabei wird der Wert als Einwohner pro Quadratmeter berechnet, indem die Anzahl der Einwohner durch die Fläche geteilt und anschließend durch 10.000 skaliert wird. Zur Einteilung werden fünf Klassen nach der Jenks-Methode gebildet, wobei besonders darauf geachtet wird, dass diese Klassen nicht miteinander verbunden sind. Die Darstellung erfolgt über einen Farbverlauf, der von Weiß für niedrige Werte bis zu Rot für hohe Werte reicht.
-                Für die Druckzusammenstellung werden schließlich die beiden Kartenbilder platziert und mit den notwendigen Elementen versehen: Überschrift, Maßstab, Maßstabsbalken, Quellenangaben, Legende sowie der Angabe des Erstellers. So entsteht eine übersichtliche und aussagekräftige Kartendarstellung der Bevölkerungsdichte in den urbanen Räumen Berlins.”</p>
+            <p>Zunächst werden die notwendigen Daten heruntergeladen, darunter die Kirchbäume aus dem FIS Broker sowie die Geometrie von Berlin. Anschließend erfolgt die Erzeugung von Hexagonen mittels eines Gitters, die daraufhin mit der Fläche von Berlin verschneidet werden, sodass nur die Hexagone innerhalb der Stadtgrenzen berücksichtigt werden. Danach werden die Punktdaten der Kirschbäume geladen. Im nächsten Schritt werden die Bäume gezählt, die sich jeweils in den einzelnen Hexagon-Polygonen befinden. Dabei ist wichtig, dass in jedem Polygonfeld ein Attribut vorhanden ist, weshalb als Zählerfeld am besten eine eindeutige ID verwendet wird.
+                Für die Visualisierung der Ergebnisse kommt eine abgestufte Symbolisierung zum Einsatz, bei der als Bezugsfeld das neu erstellte Zählerfeld genutzt wird. Die Einteilung erfolgt in fünf Klassen, die nach der Jenks-Methode gebildet werden. Dabei wird besonders darauf geachtet, dass die Klassen klar voneinander getrennt sind und nicht verbunden erscheinen. Die Symbolisierung arbeitet mit einem Farbverlauf, der von Weiß für geringe Werte bis hin zu Rot für hohe Baumdichten reicht.
+                Abschließend wird für die Druckzusammenstellung das Kartenbild platziert und mit den notwendigen Elementen wie Überschrift, Maßstab, Maßstabsbalken, Quellenangaben, Legende sowie dem Ersteller versehen, um eine übersichtliche und informative Darstellung zu gewährleisten.</p>
              <h2>Vorteile</h2> 
             <ul>
-                <li>Realistischere Darstellung von Verteilungen.</li>
-                <li>Zeigt Daten dort, wo sie tatsächlich auftreten (z. B. Bevölkerungsdichte nur in besiedelten Flächen statt gleichmäßig über ganze Gemeindeflächen verteilt).</li>
-                <li>Vermeidung von Flächenverzerrungen.</li>
-                <li>Administrative Grenzen können große unbesiedelte Flächen enthalten (z. B. Wälder, Seen), die bei klassischen Choroplethenkarten zu falschen Interpretationen führen. Dasymetrische Karten reduzieren diesen Effekt.</li>
-                <li>Höhere Genauigkeit bei kleinen Flächen.</li>
-                <li>Besonders nützlich bei der Darstellung von Phänomenen, die räumlich ungleich verteilt sind (z. B. Bewohner).</li>
-                <li>Vermeidung von falscher Darstellung.</li>
-                <li>Bessere Vergleichbarkeit zwischen Regionen.</li>
+                <li>Unabhängig von administrativen Grenzen. Daten werden gleichmäßig über ein Raster verteilt – unabhängig von politischen oder verwaltungs Einheiten. Das erlaubt objektivere, vergleichbare räumliche Betrachtung.</li>
+                <li>Gleiche Flächengröße, also besser vergleichbar. Da alle Gitterzellen gleich groß sind, wird die visuelle Interpretation von Werten erleichtert (kein Flächenverzerrungseffekt durch große Gebiete mit wenig Kirschbäumen).</li>
+                <li>Förderung räumlicher Genauigkeit. Besonders bei kleinräumigen Analysen, wie bei den Kirschbäumen, ermöglichen Gitterkarten eine sehr differenzierte Darstellung räumlicher Muster.</li>
+                <li>Geeignet für flächenhafte Daten. Ideal zur Darstellung von Kirschbäumen, da diese kontinuierlich über den Raum variieren und nicht an politische Grenzen gebunden sind (meistens).</li>
+                <li>Vermeidung von unrealistischen Werten aufgrund von zu kleinen oder großen Flächen (Wie bei Dasymetrische Choroplethenkarten). Da Gitterzellen gleich sind, wird das Problem reduziert, dass die Darstellung von der schwankenden Größe der Untergliederung abhängt.</li>
             </ul>
 
             <h2>Nachteile</h2>
             <ul>
-                <li>Die notwendigen Daten wie z.B. Landnutzungsdaten liegen nicht immer vor.</li>
-                <li>Die Erstellung ist komplexer als bei klassischen Choropletenkarten, da zusätzliche Berechnungen und Modellierungen notwendig sind.</li>
-                <li>Die Karten können für manche Betrachter schwerer zu verstehen sein, da die Flächen nicht mehr direkt mit administrativen Einheiten übereinstimmen.</li>
-                <li>Die Verteilung innerhalb einer Einheit ist noch immer modelliert und bildet die Verhältnisse nicht exakt ab.</li>
+                <li>Jede Rasterzelle wird separat analysiert und dargestellt Hohe Datenmenge erforderlich.</li>
+                <li>Die Verarbeitung und Darstellung großer Rasterdaten kann rechenaufwendig sein.</li>
+                <li>Durch die starke Generalisierung können kleine räumliche Unterschiede verloren gehen oder verfälscht werden.</li>
             </ul>
         </section>
     </main>
